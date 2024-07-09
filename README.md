@@ -111,15 +111,6 @@ PORT=3000
 - JWT token expiration and validation.
 - Input validation and sanitization to prevent common security vulnerabilities.
 
-### 16. Future Improvements
-
-- Implement additional features such as two-factor authentication (2FA) for enhanced security.
-- Enhance email templates and notifications for better user experience.
-
----
-
-This README file provides a detailed overview of the Node.js Wallet API, including setup instructions, feature implementation details, API endpoints, and considerations for security and future improvements. Adjust the sections and details based on your specific project implementation and requirements.Certainly! Here's a more coding-oriented README file that provides details on how each task is implemented in your Node.js Wallet API:
-
 ---
 
 # Node.js Wallet API
