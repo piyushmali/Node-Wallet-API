@@ -18,7 +18,7 @@ This project implements a RESTful API for a wallet system using Node.js, Express
 Create a `.env` file in the root directory with the following variables:
 
 ```dotenv
-MONGODB_URI=mongodb://localhost:27017/wallet
+MONGODB_URI=mongodb://localhost:27017/node-wallet-api
 JWT_SECRET=your_jwt_secret
 EMAIL_HOST=smtp.example.com
 EMAIL_PORT=587
