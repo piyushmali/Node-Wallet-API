@@ -1,18 +1,15 @@
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
+{
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "warn"
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:prettier/recommended',
-  ],
-  parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module',
+  "env": {
+    "node": true,
+    "es6": true
   },
-  rules: {
-    'prettier/prettier': ['error', { singleQuote: true }],
-  },
-};
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  }
+}

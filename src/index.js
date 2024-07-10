@@ -6,7 +6,7 @@ import bodyParser from 'body-parser';
 import authRoutes from './routes/authRoutes.js';
 import transactionRoutes from './routes/transactionRoutes.js';
 
-dotenv.config(); 
+dotenv.config();
 
 const app = express();
 

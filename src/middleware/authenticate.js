@@ -1,21 +1,25 @@
-import jwt from '../utils/jwt.js';
+import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const authenticate = async (req, res, next) => {
   const token = req.header('Authorization').replace('Bearer ', '');
 
   try {
-    const decoded = jwt.verify(token);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.userId);
 
     if (!user) {
-      throw new Error();
+      return res.status(401).json({ message: 'Authentication failed' });
     }
 
     req.user = user;
     next();
   } catch (err) {
-    res.status(401).send({ error: 'Please authenticate' });
+    console.error(err.message);
+    res.status(401).json({ message: 'Authentication failed' });
   }
 };
 

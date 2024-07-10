@@ -1,7 +1,11 @@
 import bcrypt from 'bcryptjs';
-import jwt from '../utils/jwt.js';
+import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
 import mailer from '../utils/mailer.js';
+
+// Load environment variables
+import dotenv from 'dotenv';
+dotenv.config();
 
 const signup = async (req, res) => {
   try {
@@ -22,7 +26,8 @@ const signup = async (req, res) => {
     await user.save();
 
     // Send verification email
-    const token = jwt.sign({ userId: user._id });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    console.log('Generated Token:', token); // Debugging
     const verificationLink = `http://localhost:3000/api/auth/verify-email?token=${token}`;
     await mailer.sendEmail(email, 'Verify your email', verificationLink);
 
@@ -36,7 +41,9 @@ const signup = async (req, res) => {
 const verifyEmail = async (req, res) => {
   try {
     const { token } = req.query;
-    const decoded = jwt.verify(token);
+    console.log('Received Token:', token); // Debugging
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log('Decoded Token:', decoded); // Debugging
     const user = await User.findById(decoded.userId);
 
     if (!user) {
@@ -72,7 +79,7 @@ const login = async (req, res) => {
       // Add OTP validation logic here
     }
 
-    const token = jwt.sign({ userId: user._id });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.json({ token });
   } catch (err) {
     console.error(err.message);
