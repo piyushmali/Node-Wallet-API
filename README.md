@@ -71,9 +71,8 @@ This project is a Node.js-based Wallet API that handles user authentication, tra
 
 ## Postman Documentation
 
-Explore the Node Wallet API endpoints and functionalities [## Postman Documentation
+Explore the Node Wallet API endpoints and functionalities in detail using [Postman Documentation](https://documenter.getpostman.com/view/36718380/2sA3e5c7ss).
 
-Explore the Node Wallet API endpoints and functionalities [here]([https://link-to-your-postman-documentation](https://documenter.getpostman.com/view/36718380/2sA3e5c7ss))].
 
 ## Output Images
 
