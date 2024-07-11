@@ -98,9 +98,6 @@ Here are some output images demonstrating the functionality of the Node Wallet A
    ![Successful Transaction Email](images/successful_transaction_email.png)
 
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
