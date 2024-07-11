@@ -69,6 +69,10 @@ This project is a Node.js-based Wallet API that handles user authentication, tra
 6. **Email Notifications:**
     - Users receive an email notification for successful and failed transactions.
 
+## Postman Documentation
+
+Explore the Node Wallet API endpoints and functionalities [here]([https://link-to-your-postman-documentation](https://documenter.getpostman.com/view/36718380/2sA3e5c7ss)).
+
 ## Output Images
 
 Here are some output images demonstrating the functionality of the Node Wallet API:
@@ -98,7 +102,13 @@ Here are some output images demonstrating the functionality of the Node Wallet A
    ![Successful Transaction Email](images/successful_transaction_email.png)
 
 
-
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+
+
+
+
+
+
