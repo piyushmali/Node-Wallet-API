@@ -6,7 +6,7 @@ const transactionSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
-  recipient: {
+  receiver: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
@@ -22,4 +22,5 @@ const transactionSchema = new mongoose.Schema({
 });
 
 const Transaction = mongoose.model('Transaction', transactionSchema);
+
 export default Transaction;

@@ -1,10 +1,10 @@
 import express from 'express';
 import { transfer, transactionHistory } from '../controllers/transactionController.js';
-import authenticate from '../middleware/authenticate.js';
+import checkAuth from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
-router.post('/transfer', authenticate, transfer);
-router.get('/history', authenticate, transactionHistory);
+router.post('/transfer', transfer);
+router.get('/history', checkAuth, transactionHistory);
 
 export default router;
