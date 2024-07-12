@@ -19,13 +19,17 @@ This project is a Node.js-based Wallet API that handles user authentication, tra
 
 The API is deployed on Render. You can access it [here](https://node-wallet-api.onrender.com).
 
-![Render Deployment](images/render_deployment.png)
+<div style="border: 1px solid #ccc; padding: 10px;">
+    <img src="images/render_deployment.png" alt="Render Deployment">
+</div>
 
 ### Postman Publish
 
 The API documentation is published on Postman. You can view it [here](https://documenter.getpostman.com/view/36718380/2sA3e5c7ss).
 
-![Postman Publish](images/postman_publish.png)
+<div style="border: 1px solid #ccc; padding: 10px;">
+    <img src="images/postman_publish.png" alt="Postman Publish">
+</div>
 
 ## Installation
 
@@ -83,37 +87,50 @@ The API documentation is published on Postman. You can view it [here](https://do
 6. **Email Notifications:**
     - Users receive an email notification for successful and failed transactions.
 
-
 ## Output Images
 
 Here are some output images demonstrating the functionality of the Node Wallet API:
 
 1. **User Registration:**
-   ![User Registration](images/user_registration.png)
+   <div style="border: 1px solid #ccc; padding: 10px;">
+       <img src="images/user_registration.png" alt="User Registration">
+   </div>
 
 2. **Email Verification:**
-   ![Email Verification](images/email_verification.png)
+   <div style="border: 1px solid #ccc; padding: 10px;">
+       <img src="images/email_verification.png" alt="Email Verification">
+   </div>
 
 3. **User Login:**
-   ![User Login](images/user_login.png)
+   <div style="border: 1px solid #ccc; padding: 10px;">
+       <img src="images/user_login.png" alt="User Login">
+   </div>
 
 4. **JWT Token Response:**
-   ![JWT Token Response](images/jwt_token_response.png)
+   <div style="border: 1px solid #ccc; padding: 10px;">
+       <img src="images/jwt_token_response.png" alt="JWT Token Response">
+   </div>
 
 5. **Fake Balance on Signup:**
-   ![Fake Balance on Signup](images/fake_balance_signup.png)
+   <div style="border: 1px solid #ccc; padding: 10px;">
+       <img src="images/fake_balance_signup.png" alt="Fake Balance on Signup">
+   </div>
 
 6. **Transfer Amount:**
-   ![Transfer Amount](images/transfer_amount.png)
+   <div style="border: 1px solid #ccc; padding: 10px;">
+       <img src="images/transfer_amount.png" alt="Transfer Amount">
+   </div>
 
 7. **Transaction History:**
-   ![Transaction History](images/transaction_history.png)
+   <div style="border: 1px solid #ccc; padding: 10px;">
+       <img src="images/transaction_history.png" alt="Transaction History">
+   </div>
 
 8. **Email Notification for Successful Transaction:**
-   ![Successful Transaction Email](images/successful_transaction_email.png)
+   <div style="border: 1px solid #ccc; padding: 10px;">
+       <img src="images/successful_transaction_email.png" alt="Successful Transaction Email">
+   </div>
 
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
-
-
