@@ -1,8 +1,12 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-mongoose.set('strictQuery', true); // Set strictQuery to true to suppress the warning
+dotenv.config();
 
-async function connectToMongoDB(uri) {
+mongoose.set('strictQuery', true);
+
+async function connectToMongoDB() {
+  const uri = process.env.MONGODB_URI;
   try {
     if (!uri) {
       throw new Error('The MongoDB URI is not defined.');
@@ -14,7 +18,7 @@ async function connectToMongoDB(uri) {
     console.log('MongoDB connected successfully');
   } catch (error) {
     console.error('Error connecting to MongoDB:', error.message);
-    throw error; // Rethrow the error to handle it in the caller
+    throw error;
   }
 }
 
