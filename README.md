@@ -49,18 +49,18 @@ The API documentation is published on Postman. You can view it [here](https://do
     Create a `.env` file in the root directory with the following content:
 
     ```
-    MONGODB_URI=mongodb://localhost:27017/node-wallet-db
+    MONGODB_URI=mongodb+srv://<username>:<password>@<clustername>.mongodb.net/<dbname>?retryWrites=true&w=majority
     JWT_SECRET=your_jwt_secret
-    EMAIL_HOST=smtp.example.com
+    EMAIL_HOST=smtp.gmail.com
     EMAIL_PORT=587
-    EMAIL_USER=your_email@example.com
+    EMAIL_USER=your_email@gmail.com
     EMAIL_PASS=your_email_password
     PORT=3000
     ```
 
 4. **Run the server using nodemon:**
     ```bash
-    npm start
+    nodemon
     ```
 
 ## Usage
