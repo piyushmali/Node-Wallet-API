@@ -83,9 +83,6 @@ The API documentation is published on Postman. You can view it [here](https://do
 6. **Email Notifications:**
     - Users receive an email notification for successful and failed transactions.
 
-## Postman Documentation
-
-Explore the Node Wallet API endpoints and functionalities in detail using [Postman Documentation](https://documenter.getpostman.com/view/36718380/2sA3e5c7ss).
 
 ## Output Images
 
