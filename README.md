@@ -13,6 +13,20 @@ This project is a Node.js-based Wallet API that handles user authentication, tra
 - **Transaction History**: Users and admins can view transaction details.
 - **Email Notifications**: Users receive email notifications for transaction success or failure.
 
+## Deployment
+
+### Render Deployment
+
+The API is deployed on Render. You can access it [here](https://node-wallet-api.onrender.com).
+
+![Render Deployment](images/render_deployment.png)
+
+### Postman Publish
+
+The API documentation is published on Postman. You can view it [here](https://documenter.getpostman.com/view/36718380/2sA3e5c7ss).
+
+![Postman Publish](images/postman_publish.png)
+
 ## Installation
 
 1. **Clone the repository:**
@@ -73,7 +87,6 @@ This project is a Node.js-based Wallet API that handles user authentication, tra
 
 Explore the Node Wallet API endpoints and functionalities in detail using [Postman Documentation](https://documenter.getpostman.com/view/36718380/2sA3e5c7ss).
 
-
 ## Output Images
 
 Here are some output images demonstrating the functionality of the Node Wallet API:
@@ -102,14 +115,8 @@ Here are some output images demonstrating the functionality of the Node Wallet A
 8. **Email Notification for Successful Transaction:**
    ![Successful Transaction Email](images/successful_transaction_email.png)
 
-
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
-
-
-
-
-
 
 
