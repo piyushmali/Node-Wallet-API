@@ -39,10 +39,24 @@ export const transactionHistory = async (req, res) => {
   try {
     const transactions = await Transaction.find({
       $or: [{ sender: req.user._id }, { receiver: req.user._id }],
-    }).populate('sender', 'email').populate('receiver', 'email');
+    })
+      .populate('sender', 'email')
+      .populate('receiver', 'email');
     res.status(200).json(transactions);
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+export const getAllTransactions = async (req, res) => {
+  try {
+    const transactions = await Transaction.find()
+      .populate('sender', 'email')
+      .populate('receiver', 'email');
+    res.status(200).json(transactions);
+  } catch (error) {
+    console.error('Error fetching all transactions:', error);
     res.status(500).json({ message: 'Server Error' });
   }
 };
