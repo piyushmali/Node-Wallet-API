@@ -37,6 +37,7 @@ export const transfer = async (req, res) => {
 
 export const transactionHistory = async (req, res) => {
   try {
+<<<<<<< HEAD
     let transactions;
     if (req.user.isAdmin) {
       transactions = await Transaction.find().populate('sender', 'email').populate('receiver', 'email');
@@ -45,9 +46,28 @@ export const transactionHistory = async (req, res) => {
         $or: [{ sender: req.user._id }, { receiver: req.user._id }],
       }).populate('sender', 'email').populate('receiver', 'email');
     }
+=======
+    const transactions = await Transaction.find({
+      $or: [{ sender: req.user._id }, { receiver: req.user._id }],
+    })
+      .populate('sender', 'email')
+      .populate('receiver', 'email');
+>>>>>>> 91437f2a74a9e48c8005fec50b89e2904b1f02c5
     res.status(200).json(transactions);
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+export const getAllTransactions = async (req, res) => {
+  try {
+    const transactions = await Transaction.find()
+      .populate('sender', 'email')
+      .populate('receiver', 'email');
+    res.status(200).json(transactions);
+  } catch (error) {
+    console.error('Error fetching all transactions:', error);
     res.status(500).json({ message: 'Server Error' });
   }
 };

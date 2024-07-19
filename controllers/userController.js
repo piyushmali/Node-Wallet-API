@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import sendEmail from '../config/sendEmail.js';
 
 export const userRegistration = async (req, res) => {
+<<<<<<< HEAD
   const { name, email, password, tc } = req.body;
   try {
     const existingUser = await User.findOne({ email });
@@ -25,12 +26,50 @@ export const userRegistration = async (req, res) => {
   } catch (error) {
     console.error('Error registering user:', error);
     res.status(500).json({ message: 'Server error' });
+=======
+  const { name, email, password, password_confirmation, tc } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({ status: 'failed', message: 'Email already exists' });
+    }
+
+    if (name && email && password && password_confirmation && tc) {
+      if (password === password_confirmation) {
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(password, salt);
+        const newUser = new User({ name, email, password: hashPassword, tc });
+        await newUser.save();
+
+        const token = jwt.sign({ userID: newUser._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
+
+        const emailSubject = 'Welcome to Our App!';
+        const emailText = `Hello ${name},\n\nThank you for registering. We're excited to have you on board!\n\nBest regards,\nThe Team`;
+
+        try {
+          await sendEmail(email, emailSubject, emailText);
+          res.status(201).json({ status: 'success', message: 'Registration Success', token });
+        } catch (emailError) {
+          console.error('Error sending email:', emailError);
+          res.status(201).json({ status: 'success', message: 'Registration Success, but failed to send email', token });
+        }
+      } else {
+        res.status(400).json({ status: 'failed', message: "Password and Confirm Password don't match" });
+      }
+    } else {
+      res.status(400).json({ status: 'failed', message: 'All fields are required' });
+    }
+  } catch (error) {
+    console.error('Error registering user:', error);
+    res.status(500).json({ status: 'failed', message: 'Unable to Register' });
+>>>>>>> 91437f2a74a9e48c8005fec50b89e2904b1f02c5
   }
 };
 
 export const userLogin = async (req, res) => {
   const { email, password } = req.body;
   try {
+<<<<<<< HEAD
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: 'Invalid credentials' });
@@ -47,6 +86,22 @@ export const userLogin = async (req, res) => {
   } catch (error) {
     console.error('Error logging in user:', error);
     res.status(500).json({ message: 'Server error' });
+=======
+    if (email && password) {
+      const user = await User.findOne({ email });
+      if (user && (await bcrypt.compare(password, user.password))) {
+        const token = jwt.sign({ userID: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
+        res.status(200).json({ status: 'success', message: 'Login Success', token });
+      } else {
+        res.status(400).json({ status: 'failed', message: 'Invalid email or password' });
+      }
+    } else {
+      res.status(400).json({ status: 'failed', message: 'All fields are required' });
+    }
+  } catch (error) {
+    console.error('Error logging in user:', error);
+    res.status(500).json({ status: 'failed', message: 'Unable to Login' });
+>>>>>>> 91437f2a74a9e48c8005fec50b89e2904b1f02c5
   }
 };
 
