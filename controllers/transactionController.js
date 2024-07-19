@@ -37,9 +37,14 @@ export const transfer = async (req, res) => {
 
 export const transactionHistory = async (req, res) => {
   try {
-    const transactions = await Transaction.find({
-      $or: [{ sender: req.user._id }, { receiver: req.user._id }],
-    }).populate('sender', 'email').populate('receiver', 'email');
+    let transactions;
+    if (req.user.isAdmin) {
+      transactions = await Transaction.find().populate('sender', 'email').populate('receiver', 'email');
+    } else {
+      transactions = await Transaction.find({
+        $or: [{ sender: req.user._id }, { receiver: req.user._id }],
+      }).populate('sender', 'email').populate('receiver', 'email');
+    }
     res.status(200).json(transactions);
   } catch (error) {
     console.error(error);

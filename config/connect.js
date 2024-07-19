@@ -1,21 +1,16 @@
 import mongoose from 'mongoose';
 
-mongoose.set('strictQuery', true); // Set strictQuery to true to suppress the warning
-
-async function connectToMongoDB(uri) {
+const connectDB = async () => {
   try {
-    if (!uri) {
-      throw new Error('The MongoDB URI is not defined.');
-    }
-    await mongoose.connect(uri, {
+    await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log('MongoDB connected successfully');
+    console.log('MongoDB connected');
   } catch (error) {
-    console.error('Error connecting to MongoDB:', error.message);
-    throw error; // Rethrow the error to handle it in the caller
+    console.error('MongoDB connection error:', error);
+    process.exit(1);
   }
-}
+};
 
-export { connectToMongoDB };
+export default connectDB;

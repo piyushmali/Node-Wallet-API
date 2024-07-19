@@ -1,30 +1,31 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
 import express from 'express';
-import cors from 'cors';
-import { connectToMongoDB } from './config/connect.js';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import userRoutes from './routes/userRoutes.js';
 import transactionRoutes from './routes/transactionRoutes.js';
 
-const app = express();
-const port = process.env.PORT || 3000;
-const DATABASE_URL = process.env.MONGODB_URI;
+// Load environment variables
+dotenv.config();
 
-app.use(cors());
+// Debugging: Print environment variables to console
+console.log('MONGODB_URI:', process.env.MONGODB_URI);
+
+const app = express();
+
 app.use(express.json());
 
-app.use('/api/user', userRoutes);
-app.use('/api/transactions', transactionRoutes);
-
-connectToMongoDB(DATABASE_URL)
-  .then(() => {
-    console.log('Connected to MongoDB');
+// Connect to MongoDB
+mongoose.set('strictQuery', false);
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
-  .catch((error) => {
-    console.error('Error connecting to MongoDB:', error);
-  });
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.log('Failed to connect to MongoDB', err));
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
+app.use('/api/user', userRoutes);
+app.use('/api/transaction', transactionRoutes);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
