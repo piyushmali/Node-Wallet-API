@@ -4,17 +4,14 @@ import dotenv from 'dotenv';
 import userRoutes from './routes/userRoutes.js';
 import transactionRoutes from './routes/transactionRoutes.js';
 
-// Load environment variables
 dotenv.config();
 
-// Debugging: Print environment variables to console
 console.log('MONGODB_URI:', process.env.MONGODB_URI);
 
 const app = express();
 
 app.use(express.json());
 
-// Connect to MongoDB
 mongoose.set('strictQuery', false);
 mongoose
   .connect(process.env.MONGODB_URI, {
